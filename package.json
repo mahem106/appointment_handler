@@ -1,0 +1,24 @@
+{
+  "name": "appointments",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "postinstall": "bower i"
+  },
+  "engines": {
+    "node": "4.3.1"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "bower": "^1.7.7",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs": "~2.3.3",
+    "express": "~4.13.1",
+    "moment": "^2.12.0",
+    "mongoose": "^4.4.8",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
+  }
+}
