@@ -94,10 +94,13 @@ router.put('/:apptId/addClients', function(req, res) {
     Appointment.findById(req.params.apptId, function(err, appt) {
       if(err || !appt) return res.status(400).send(err || 'Appointment Not Found.');
 
-      Client.find(req.body.clients, function(err, client) {
-        if(err || !client) return res.status(404).send(err || 'Client Not Found!');
+      Client.find({_id: { $in: req.body.clientIds } }, function(err, clients) {
+        if(err) return res.status(404).send(err);
 
-        appt.clients.push(req.params.clientId);
+        var clientIds = clients.map(client => client._id);
+
+        appt.clients = appt.clients.concat(clientIds);
+
         appt.save(function(err, savedAppointment) {
           res.status(err ? 400 : 200).send(err || savedAppointment);
       });
